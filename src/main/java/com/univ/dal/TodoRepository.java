@@ -54,7 +54,7 @@ public class TodoRepository {
 		Todo origin = _uow.em.getReference(Todo.class , id);
 		origin.setTitle(update.getTitle());
 		origin.setComplete(update.isComplete());
-		origin.setCategory(update.getCategory());
+		//origin.setCategory(update.getCategory());
 		
 		EntityTransaction tx = _uow.em.getTransaction();
 		try {
@@ -71,6 +71,7 @@ public class TodoRepository {
 	public void deleteTodo(long id) {
 		Todo t = _uow.em.getReference(Todo.class , id);
 		Category c = _uow.em.getReference(Category.class , t.getCategory().getId());
+		
 		c.removeTodo(t);
 		EntityTransaction tx = _uow.em.getTransaction();
 		try {
