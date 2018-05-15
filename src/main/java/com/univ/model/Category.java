@@ -24,14 +24,16 @@ public class Category {
 	@JsonIgnore
 	@OneToMany(mappedBy = "category" , cascade=CascadeType.ALL)
 	protected Collection<Todo> todos;
+	protected int todosCount;
 	
 	public Category() {
 		super();
 		this.todos = new ArrayList<Todo>();
+		this.todosCount = 0;
 	}
 	
 	@JsonCreator
-	public Category( @JsonProperty("name") String name ) {
+	public Category( @JsonProperty("name") String name , @JsonProperty("todosCount") int todosCount ) {
 		this.name = name;
 	}
 	
@@ -55,12 +57,22 @@ public class Category {
 		this.todos = todos;
 	}
 	
+	public int getTodosCount() {
+		return todosCount;
+	}
+
+	public void setTodosCount(int todosCount) {
+		this.todosCount = todosCount;
+	}
+
 	public void addTodo(Todo t) {
 		this.todos.add(t);
+		this.todosCount++;
 	}
 	
 	public void removeTodo(Todo t) {
 		this.todos.remove(t);
+		this.todosCount--;
 	}
 	
 	@Override

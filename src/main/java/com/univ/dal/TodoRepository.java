@@ -74,6 +74,7 @@ public class TodoRepository {
 		Category c = _uow.em.getReference(Category.class , t.getCategory().getId());
 		
 		c.removeTodo(t);
+		
 		EntityTransaction tx = _uow.em.getTransaction();
 		try {
 		tx.begin();

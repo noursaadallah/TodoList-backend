@@ -35,7 +35,7 @@ public class Todo {
 	@JsonCreator
 	public Todo( @JsonProperty("title") String title , 
 				@JsonProperty("complete") boolean complete,
-				@JsonProperty("category") int catId ) {
+				@JsonProperty("category") int catId) {
 		this.title = title;
 		this.complete = complete;
 	}
@@ -64,7 +64,7 @@ public class Todo {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
+
 	@Override
 	public boolean equals(Object other) {
 	    if (other == null) return false;
