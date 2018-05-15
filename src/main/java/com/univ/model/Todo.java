@@ -25,9 +25,17 @@ public class Todo {
 		super();
 	}
 
+//	@JsonCreator
+//	public Todo( @JsonProperty("title") String title , 
+//				@JsonProperty("complete") boolean complete) {
+//		this.title = title;
+//		this.complete = complete;
+//	}
+	
 	@JsonCreator
 	public Todo( @JsonProperty("title") String title , 
-				@JsonProperty("complete") boolean complete) {
+				@JsonProperty("complete") boolean complete,
+				@JsonProperty("category") int catId ) {
 		this.title = title;
 		this.complete = complete;
 	}

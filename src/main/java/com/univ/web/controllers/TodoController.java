@@ -29,8 +29,8 @@ public class TodoController implements ITodoController {
 	}
 	
 
-	public void createTodo(@PathVariable("categoryId") long categoryId , @RequestBody Todo t){
-		tr.createTodo(t, categoryId);
+	public Todo createTodo(@PathVariable("categoryId") long categoryId , @RequestBody Todo t){
+		return tr.createTodo(t, categoryId);
 	}
 	
 
@@ -44,7 +44,7 @@ public class TodoController implements ITodoController {
 	}
 	
 
-	public void toggleTodoComplete( @PathVariable("id") long id ){
-		tr.toggleTodoComplete(id);
+	public Todo toggleTodoComplete( @PathVariable("id") long id ){
+		return tr.toggleTodoComplete(id);
 	}
 }

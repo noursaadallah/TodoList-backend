@@ -31,7 +31,8 @@ public interface ICategoryController {
 	
 	@RequestMapping(method = RequestMethod.POST , consumes="application/json")
 	@ResponseStatus(HttpStatus.OK)
-	public void createCategory(@RequestBody Category c);
+	@ResponseBody
+	public Category createCategory(@RequestBody Category c);
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)

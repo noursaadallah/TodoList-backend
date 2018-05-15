@@ -21,7 +21,7 @@ public class CategoryRepository {
 		return res;
 	}
 	
-	public void createCategory(Category c) {
+	public Category createCategory(Category c) {
 		EntityTransaction tx = _uow.em.getTransaction();
 		try {
 			tx.begin();
@@ -31,6 +31,7 @@ public class CategoryRepository {
 			e.printStackTrace();
 			tx.rollback();
 		}
+		return c;
 	}
 	
 	public void removeCategory(long id) {

@@ -33,7 +33,7 @@ public class TodoRepository {
 		return t;
 	}
 	
-	public void createTodo(Todo t , long CategoryId) {
+	public Todo createTodo(Todo t , long CategoryId) {
 		Category c = _uow.em.find(Category.class , CategoryId);
 		c.addTodo(t);
 		t.setCategory(c);
@@ -41,13 +41,14 @@ public class TodoRepository {
 		EntityTransaction tx = _uow.em.getTransaction();
 		try {
 			tx.begin();
-			_uow.em.merge(c);
 			_uow.em.persist(t);
+			_uow.em.merge(c);
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		}
+		return t;
 	}
 	
 	public Todo updateTodo(long id , Todo update) {
@@ -85,7 +86,7 @@ public class TodoRepository {
 		}
 	}
 	
-	public void toggleTodoComplete(long id) {
+	public Todo toggleTodoComplete(long id) {
 		Todo origin = _uow.em.getReference(Todo.class , id);
 		origin.setComplete(!origin.isComplete());
 		
@@ -98,5 +99,6 @@ public class TodoRepository {
 			e.printStackTrace();
 			tx.rollback();
 		}
+		return origin;
 	}
 }

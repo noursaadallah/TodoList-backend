@@ -36,7 +36,8 @@ public interface ITodoController {
 	
 	@RequestMapping(value="/{categoryId}" , method = RequestMethod.POST , consumes="application/json")
 	@ResponseStatus(HttpStatus.OK)
-	public void createTodo(@PathVariable("categoryId") long categoryId , @RequestBody Todo t);
+	@ResponseBody
+	public Todo createTodo(@PathVariable("categoryId") long categoryId , @RequestBody Todo t);
 	
 	@RequestMapping(value="/{id}" ,method = RequestMethod.PUT , consumes="application/json")
 	@ResponseStatus(HttpStatus.OK)
@@ -49,5 +50,5 @@ public interface ITodoController {
 	@RequestMapping(value="/togglecomplete/{id}",method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public void toggleTodoComplete( @PathVariable("id") long id );
+	public Todo toggleTodoComplete( @PathVariable("id") long id );
 }

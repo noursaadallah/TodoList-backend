@@ -24,8 +24,8 @@ public class CategoryController implements ICategoryController {
 	}
 	
 	
-	public void createCategory(@RequestBody Category c){
-		cr.createCategory(c);
+	public Category createCategory(@RequestBody Category c){
+		return cr.createCategory(c);
 	}
 	
 	
